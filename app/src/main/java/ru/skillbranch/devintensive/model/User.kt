@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.model
 
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 data class User (
@@ -31,9 +32,16 @@ data class User (
         fun makeUser(fullName: String?) : User{
             lastId++
 
-            val parts = fullName?.split(" ")
-            var firstName = parts?.getOrNull(0)
-            var lastName = parts?.getOrNull(1)
+
+
+//            старая версия
+//            val parts = fullName?.split(" ")
+//            var firstName = parts?.getOrNull(0)
+//            var lastName = parts?.getOrNull(1)
+
+            // компактная форма записи - деструктурное присваивание
+//        var (firstName, lastName) = Utils.parseFullName(fullName)
+            val (firstName, lastName)  = Utils.parseFullName(fullName)
 
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
         }
