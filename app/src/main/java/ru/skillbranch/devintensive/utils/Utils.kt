@@ -18,4 +18,29 @@ object Utils {
         // более короткая запись
         return (firstName to lastName)
     }
+
+    fun toInitials(firstName: String?, lastName: String?): String? {
+
+        val initialFirstName: String? = when {
+            firstName.isNullOrEmpty() -> null
+            else -> firstName[0].toUpperCase().toString()
+        }
+
+        val initialLastName: String? = when {
+            lastName.isNullOrEmpty() -> null
+            else -> lastName[0].toUpperCase().toString()
+        }
+
+        val result: String? = when {
+            initialFirstName.isNullOrEmpty() -> initialLastName
+            initialLastName.isNullOrEmpty() -> initialFirstName
+            initialFirstName.isNullOrEmpty() && initialLastName.isNullOrEmpty() -> null
+            initialFirstName.isNullOrBlank() && initialLastName.isNullOrBlank() -> null
+
+            else -> initialFirstName + initialLastName
+        }
+
+
+        return result
+    }
 }
