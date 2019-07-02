@@ -23,12 +23,12 @@ object Utils {
 
         val initialFirstName: String? = when {
             firstName.isNullOrEmpty() -> null
-            else -> firstName[0].toUpperCase().toString()
+            else -> firstName.trim()[0].toUpperCase().toString()
         }
 
         val initialLastName: String? = when {
             lastName.isNullOrEmpty() -> null
-            else -> lastName[0].toUpperCase().toString()
+            else -> lastName.trim()[0].toUpperCase().toString()
         }
 
         val result: String? = when {
