@@ -4,7 +4,7 @@ package ru.skillbranch.devintensive.utils
 object Utils {
     fun parseFullName(fullName: String?) : Pair<String?, String?>{
         val parts = fullName?.split(" ")
-        var firstName = parts?.getOrNull(0).orEmpty()
+        var firstName = parts?.getOrNull(0)
         var lastName = parts?.getOrNull(1)
 
 
@@ -12,8 +12,8 @@ object Utils {
         // Pair возвращает два значения
         //return Pair(firstName, lastName)
 
-        if (firstName == null || firstName == "") firstName = "null"
-        if (lastName == null || lastName == "") lastName = "null"
+        if (firstName == null || firstName == "") firstName = null
+        if (lastName == null || lastName == "") lastName = null
 
         // более короткая запись
         return (firstName to lastName)
