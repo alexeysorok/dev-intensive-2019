@@ -21,27 +21,36 @@ object Utils {
 
     fun toInitials(firstName: String?, lastName: String?): String? {
 
-        val initialFirstName: String? = when {
-            firstName.isNullOrEmpty() -> null
-            else -> firstName.trim()[0].toUpperCase().toString()
-        }
+//        val initialFirstName: String? = when {
+//            firstName.isNullOrEmpty() -> null
+//            else -> firstName.trim().get(0).toUpperCase().toString()
+//        }
+//
+//        val initialLastName: String? = when {
+//            lastName.isNullOrEmpty() -> null
+//            else -> lastName.trim().get(0).toUpperCase().toString()
+//        }
+//
+//        val result: String? = when {
+//            initialFirstName.isNullOrEmpty() -> initialLastName
+//            initialLastName.isNullOrEmpty() -> initialFirstName
+//            initialFirstName.isNullOrEmpty() && initialLastName.isNullOrEmpty() -> null
+//            initialFirstName.isNullOrBlank() && initialLastName.isNullOrBlank() -> null
+//
+//            else -> initialFirstName + initialLastName
+//        }
+//
+//
+//        return result
+        val name = firstName.orEmpty().trim().getOrNull(0)?.toUpperCase()
 
-        val initialLastName: String? = when {
-            lastName.isNullOrEmpty() -> null
-            else -> lastName.trim()[0].toUpperCase().toString()
-        }
+        val surname = lastName.orEmpty().trim().getOrNull(0)?.toUpperCase()
 
-        val result: String? = when {
-            initialFirstName.isNullOrEmpty() -> initialLastName
-            initialLastName.isNullOrEmpty() -> initialFirstName
-            initialFirstName.isNullOrEmpty() && initialLastName.isNullOrEmpty() -> null
-            initialFirstName.isNullOrBlank() && initialLastName.isNullOrBlank() -> null
+        val firstInit = name?.toString() ?: ""
 
-            else -> initialFirstName + initialLastName
-        }
+        val secondInit = surname?.toString() ?: ""
 
-
-        return result
+        return "$firstInit$secondInit".ifEmpty { null }
     }
 
     fun transliteration(payload: String, divider: String = " "): String {
